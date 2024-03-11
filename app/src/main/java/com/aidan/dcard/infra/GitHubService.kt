@@ -9,7 +9,6 @@ import retrofit2.http.Query
 
 interface GitHubService {
 
-    @Headers("Accept: application/vnd.github+json")
     @GET("search/repositories")
     suspend fun listRepos(
         @Query("q") searchKey: String,

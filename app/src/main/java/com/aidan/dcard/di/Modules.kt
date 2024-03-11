@@ -1,6 +1,7 @@
 package com.aidan.dcard.di
 
 import com.aidan.dcard.infra.GitHubService
+import com.aidan.dcard.infra.RepoInfoPagingSource
 import com.aidan.dcard.ui.MainViewModel
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -19,11 +20,13 @@ val appModule = module {
     }
     single {
         val contentType = "application/json".toMediaType()
-        Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .client(get())
-            .addConverterFactory(Json { ignoreUnknownKeys = true }.asConverterFactory(contentType))
-            .build()
+        Retrofit.Builder().baseUrl("https://api.github.com/").client(get())
+            .addConverterFactory(
+                Json {
+                    ignoreUnknownKeys = true
+                    coerceInputValues = true
+                }.asConverterFactory(contentType)
+            ).build()
     }
 
     single {
@@ -31,4 +34,5 @@ val appModule = module {
     }
 
     factory { MainViewModel(get()) }
+    factory { parametersHolder -> RepoInfoPagingSource(parametersHolder.get(), get()) }
 }

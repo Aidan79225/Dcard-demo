@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.isVisible
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aidan.dcard.R
@@ -18,7 +19,7 @@ import com.google.android.material.chip.Chip
 import org.intellij.lang.annotations.Language
 
 
-class RepoInfoAdapter: ListAdapter<RepoInfo, RepoViewHolder>(RepoInfoItemCallback()) {
+class RepoInfoAdapter: PagingDataAdapter<RepoInfo, RepoViewHolder>(RepoInfoItemCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         Log.d("RepoViewHolder", "onCreateViewHolder")
         return RepoViewHolder(
@@ -28,7 +29,9 @@ class RepoInfoAdapter: ListAdapter<RepoInfo, RepoViewHolder>(RepoInfoItemCallbac
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         Log.d("RepoViewHolder", position.toString())
-        holder.onBind(getItem(position))
+        getItem(position)?.let {
+            holder.onBind(it)
+        }
     }
 }
 
