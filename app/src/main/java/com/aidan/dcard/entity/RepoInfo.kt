@@ -8,5 +8,7 @@ data class RepoInfo(
     val id: Int,
     @SerialName("full_name")
     val fullName: String,
-    val owner: UserInfo
+    val description: String,
+    val owner: UserInfo,
+    val topics: List<String>
 )

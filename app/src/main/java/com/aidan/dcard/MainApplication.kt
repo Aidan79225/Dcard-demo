@@ -1,6 +1,7 @@
 package com.aidan.dcard
 
 import android.app.Application
+import com.aidan.dcard.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
