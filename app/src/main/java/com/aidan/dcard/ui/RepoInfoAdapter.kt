@@ -1,5 +1,6 @@
 package com.aidan.dcard.ui
 
+import android.graphics.Color
 import android.graphics.drawable.LayerDrawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,14 +22,12 @@ import org.intellij.lang.annotations.Language
 
 class RepoInfoAdapter: PagingDataAdapter<RepoInfo, RepoViewHolder>(RepoInfoItemCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
-        Log.d("RepoViewHolder", "onCreateViewHolder")
         return RepoViewHolder(
             ItemRepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
-        Log.d("RepoViewHolder", position.toString())
         getItem(position)?.let {
             holder.onBind(it)
         }
@@ -55,13 +54,13 @@ class RepoViewHolder(
                 .into(ivAvatar)
             tvStarCount.text = repoInfo.star.toString()
 
-            updateLanguageLayout(repoInfo.language)
+            updateLanguageLayout(repoInfo.language, repoInfo.languageColor)
         }
     }
 
-    private fun updateLanguageLayout(language: String) = with(vb) {
+    private fun updateLanguageLayout(language: String, languageColor: String) = with(vb) {
         (ivLanguage.drawable as? LayerDrawable)?.findDrawableByLayerId(R.id.mainLayer)?.apply {
-            DrawableCompat.setTint(mutate(), ContextCompat.getColor(itemView.context, R.color.text_light_blue))
+            DrawableCompat.setTint(mutate(), Color.parseColor(languageColor))
         }
         tvLanguage.text = language
     }

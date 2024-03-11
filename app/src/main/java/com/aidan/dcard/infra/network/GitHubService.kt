@@ -1,4 +1,4 @@
-package com.aidan.dcard.infra
+package com.aidan.dcard.infra.network
 
 import com.aidan.dcard.entity.RepoInfo
 import com.aidan.dcard.entity.RepoResponse

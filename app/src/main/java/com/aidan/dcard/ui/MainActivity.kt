@@ -1,7 +1,6 @@
 package com.aidan.dcard.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
@@ -43,6 +42,7 @@ class MainActivity: AppCompatActivity() {
                 vb.pbLoading.isVisible = loadStates.append is LoadState.Loading || loadStates.refresh is LoadState.Loading
             }
         }
+        vm.loadLanguageColor(this)
         vm.fetch("q")
     }
 
