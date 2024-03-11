@@ -10,5 +10,8 @@ data class RepoInfo(
     val fullName: String,
     val description: String,
     val owner: UserInfo,
-    val topics: List<String>
+    val topics: List<String>,
+    @SerialName("stargazers_count")
+    val star: Int,
+    val language: String
 )
