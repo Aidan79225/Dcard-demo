@@ -1,9 +1,8 @@
 package com.aidan.dcard.infra.network
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.aidan.dcard.database.LanguageColorDao
+import com.aidan.dcard.infra.database.LanguageColorDao
 import com.aidan.dcard.entity.RepoInfo
 
 class RepoInfoPagingSource(

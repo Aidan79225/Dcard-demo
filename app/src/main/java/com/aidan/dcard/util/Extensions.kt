@@ -1,4 +1,4 @@
-package com.aidan.dcard
+package com.aidan.dcard.util
 
 import android.app.Activity
 import android.content.Context

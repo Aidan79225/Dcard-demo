@@ -1,14 +1,13 @@
 package com.aidan.dcard.domain
 
 import android.util.Log
-import com.aidan.dcard.database.LanguageColorDao
+import com.aidan.dcard.infra.database.LanguageColorDao
 import com.aidan.dcard.entity.LanguageColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.koin.mp.KoinPlatform.getKoin
 import java.io.InputStream
 
 class LoadDataFromAssetUseCase(

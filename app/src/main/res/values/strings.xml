@@ -2,4 +2,6 @@
     <string name="app_name">Dcard</string>
 
     <string name="search_repo_hint">Search repositories</string>
+    <string name="updated_on_repo">Updated on %s</string>
+    <string name="updated_repo">Updated %s</string>
 </resources>

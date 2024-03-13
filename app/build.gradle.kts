@@ -69,4 +69,5 @@ dependencies {
     testImplementation("androidx.room:room-testing:$room_version")
     implementation("androidx.room:room-paging:$room_version")
     implementation("com.google.android.material:material:1.8.0")
+
 }

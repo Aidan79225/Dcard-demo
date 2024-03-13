@@ -1,4 +1,4 @@
-package com.aidan.dcard.database
+package com.aidan.dcard.infra.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

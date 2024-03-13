@@ -1,4 +1,4 @@
-package com.aidan.dcard.database
+package com.aidan.dcard.infra.database
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -11,9 +11,6 @@ import com.aidan.dcard.entity.LanguageColor.Companion.TABLE_NAME
 interface LanguageColorDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(languageColor: List<LanguageColor>)
-
-    @Query("SELECT * FROM $TABLE_NAME WHERE name = :name")
-    suspend fun findByName(name: String): List<LanguageColor>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE name IN (:names)")
     suspend fun findByNames(names: Set<String>): List<LanguageColor>

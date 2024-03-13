@@ -12,18 +12,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aidan.dcard.R
 import com.aidan.dcard.databinding.ActivityMainBinding
 import com.aidan.dcard.entity.RepoInfo
-import com.aidan.dcard.viewBinding
+import com.aidan.dcard.util.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinComponent
 
 class MainActivity: AppCompatActivity() {
     private val vb by viewBinding(ActivityMainBinding::inflate)
     private val vm by viewModel<MainViewModel>()
 
-    private val repoInfoAdapter by lazy { RepoInfoAdapter() }
+    private val repoInfoAdapter by inject<RepoInfoAdapter>()
 
     private var previousPagingJob: Job? = null
 
@@ -51,7 +53,7 @@ class MainActivity: AppCompatActivity() {
 
         lifecycleScope.launch {
             repoInfoAdapter.loadStateFlow.collectLatest { loadStates ->
-                vb.rlProgressBar.isVisible = loadStates.append is LoadState.Loading || loadStates.refresh is LoadState.Loading
+                vb.pbLoading.isVisible = loadStates.append is LoadState.Loading || loadStates.refresh is LoadState.Loading
 
                 vb.rlEmpty.isVisible = loadStates.refresh is LoadState.NotLoading && repoInfoAdapter.itemCount == 0
                 (loadStates.append as? LoadState.Error)?.also {

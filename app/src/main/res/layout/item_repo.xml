@@ -73,14 +73,14 @@
             <ImageView
                 android:layout_width="2dp"
                 android:layout_height="2dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/circle_dot"/>
 
             <ImageView
                 android:id="@+id/ivLanguage"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/circle_dot"/>
 
             <TextView
@@ -88,6 +88,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/text_dark_gray"/>
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/circle_dot"/>
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:lines="1"
+                android:ellipsize="end"
                 android:textColor="@color/text_dark_gray"/>
 
         </LinearLayout>

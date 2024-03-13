@@ -1,7 +1,9 @@
 package com.aidan.dcard.entity
 
+import com.aidan.dcard.util.DateSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.util.Date
 
 @Serializable
 data class RepoInfo(
@@ -14,5 +16,8 @@ data class RepoInfo(
     @SerialName("stargazers_count")
     val star: Int,
     val language: String = "",
-    val languageColor: String = "#2F81F7"
+    val languageColor: String = "#2F81F7",
+    @Serializable(with = DateSerializer::class)
+    @SerialName("pushed_at")
+    val updatedAt: Date?
 )

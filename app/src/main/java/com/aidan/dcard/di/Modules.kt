@@ -1,11 +1,13 @@
 package com.aidan.dcard.di
 
 import androidx.room.Room
-import com.aidan.dcard.database.MainDatabase
+import com.aidan.dcard.infra.database.MainDatabase
 import com.aidan.dcard.domain.LoadDataFromAssetUseCase
 import com.aidan.dcard.infra.network.GitHubService
 import com.aidan.dcard.infra.network.RepoInfoPagingSource
 import com.aidan.dcard.ui.MainViewModel
+import com.aidan.dcard.ui.RepoInfoAdapter
+import com.aidan.dcard.util.DateFormatUtil
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -19,9 +21,11 @@ import retrofit2.Retrofit
 
 val appModule = module {
     viewModelOf(::MainViewModel)
+    factory { RepoInfoAdapter(get()) }
 }
 
 val utilModule = module {
+    single { DateFormatUtil() }
     factory {
         Json {
             ignoreUnknownKeys = true
