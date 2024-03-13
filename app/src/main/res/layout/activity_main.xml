@@ -23,15 +23,36 @@
                 android:layout_height="match_parent"
                 />
 
-            <ProgressBar
-                android:id="@+id/pbLoading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@android:style/Widget.ProgressBar"
-                android:layout_centerInParent="true"
+            <RelativeLayout
+                android:id="@+id/rlProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:visibility="gone"
-                android:background="@android:color/transparent"
-                />
+                android:background="@color/black_67">
+                <ProgressBar
+                    android:id="@+id/pbLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.ProgressBar"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="125dp"
+                    android:src="@drawable/ic_not_found"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitXY"
+                    />
+            </RelativeLayout>
+
 
 
         </RelativeLayout>

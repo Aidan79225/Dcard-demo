@@ -33,7 +33,6 @@ class MainActivity: AppCompatActivity() {
         vb.svRepo.apply {
             editText.setTextColor(ContextCompat.getColor(context, android.R.color.white))
             editText.setHintTextColor(ContextCompat.getColor(context, R.color.text_dark_gray))
-
             show()
             editText.addTextChangedListener {
                 val searchKey = it?.takeIf { it.isNotEmpty() && it.isNotBlank() }?.toString() ?: return@addTextChangedListener
@@ -52,16 +51,25 @@ class MainActivity: AppCompatActivity() {
 
         lifecycleScope.launch {
             repoInfoAdapter.loadStateFlow.collectLatest { loadStates ->
-                vb.pbLoading.isVisible = loadStates.append is LoadState.Loading || loadStates.refresh is LoadState.Loading
+                vb.rlProgressBar.isVisible = loadStates.append is LoadState.Loading || loadStates.refresh is LoadState.Loading
+
+                vb.rlEmpty.isVisible = loadStates.refresh is LoadState.NotLoading && repoInfoAdapter.itemCount == 0
                 (loadStates.append as? LoadState.Error)?.also {
-                    Snackbar.make(vb.svRepo, it.error.message ?: "Something went wrong", Snackbar.LENGTH_SHORT).show()
+                    displayErrorMsg(it.error.message)
                 }
                 (loadStates.refresh as? LoadState.Error)?.also {
-                    Snackbar.make(vb.svRepo, it.error.message ?: "Something went wrong", Snackbar.LENGTH_SHORT).show()
+                    displayErrorMsg(it.error.message)
                 }
             }
         }
         vm.loadLanguageColor(this)
+    }
+
+    private fun displayErrorMsg(msg: String?) {
+        Snackbar.make(vb.svRepo, msg ?: "Something went wrong", Snackbar.LENGTH_SHORT).apply {
+                setBackgroundTint(ContextCompat.getColor(this@MainActivity, R.color.red))
+                setTextColor(ContextCompat.getColor(this@MainActivity, R.color.white))
+            }.show()
     }
 
     private fun subscribeNewPager(pager: Pager<Int, RepoInfo>) {
