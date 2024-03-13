@@ -37,7 +37,6 @@ class RepoInfoPagingSource(
                 nextKey = nextKey
             )
         } catch (e: Exception) {
-            Log.d("RepoInfoPagingSource", "failed $e")
             LoadResult.Error(e)
         }
     }
