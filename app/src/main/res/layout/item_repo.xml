@@ -71,8 +71,8 @@
                 android:textSize="12sp"/>
 
             <ImageView
-                android:layout_width="4dp"
-                android:layout_height="4dp"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
                 android:layout_marginStart="20dp"
                 android:src="@drawable/circle_dot"/>
 
