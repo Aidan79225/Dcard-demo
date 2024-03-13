@@ -13,5 +13,6 @@ data class RepoInfo(
     val topics: List<String>,
     @SerialName("stargazers_count")
     val star: Int,
-    val language: String = ""
+    val language: String = "",
+    val languageColor: String = "#2F81F7"
 )
