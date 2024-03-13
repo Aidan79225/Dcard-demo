@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aidan.dcard.R
 import com.aidan.dcard.databinding.ItemRepoBinding
+import com.aidan.dcard.dp
 import com.aidan.dcard.entity.RepoInfo
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.google.android.material.shape.ShapeAppearanceModel
 import org.intellij.lang.annotations.Language
 
 
@@ -69,5 +71,10 @@ class RepoViewHolder(
         text = topic
         setTextColor(ContextCompat.getColor(context, R.color.text_light_blue))
         setChipBackgroundColorResource(R.color.bg_dark_blue)
+        setChipStrokeColorResource(android.R.color.transparent)
+        shapeAppearanceModel = ShapeAppearanceModel.builder()
+            .setAllCornerSizes(context.dp(20f))
+            .build()
+
     }
 }
